@@ -243,14 +243,58 @@ namespace MS_CS_Pt1.Strings
         //2744. Find Maximum Number of String Pairs
         static public int MaximumNumberOfStringPairs(string[] words)
         {
-            bool pairMatch = true;
-            foreach (string word in words) 
+            // Step 1: Create a counter to store how many valid pairs we find
+            int count = 0;
+
+            // Step 2: Create a boolean array to remember which words have already been used in a pair
+            bool[] paired = new bool[words.Length];
+
+            // Step 3: Loop through every word in the array
+            for (int index = 0; index < words.Length; index ++)
             {
+                // Step 4: Skip this word if it was already paired earlier
+                if (paired[index]) continue;
 
-                if (!pairMatch)
+                // Step 5: Store the current word and also create its reversed version
+                string current = words[index];
+                string reverse = ReverseString(current);
 
+                // Step 6: Start a second loop to compare the current word with all later words
+                for (int remaining = index + 1; remaining < words.Length; remaining++)
+                {
+                    // Step 7: Check two things
+                    // The second word has not been used yet
+                    // The second word is equal to the reversed version of the current word
+                    if (!paired[remaining] && words[remaining] == reverse)
+                    {
+                        // Step 8: A valid pair has been found
+                        // Increase the counter
+                        count++;
+
+                        // Step 9: Mark both words as used
+                        paired[index] = true;
+                        paired[remaining] = true;
+
+                        // Step 10: Stop checking more words for this current word
+                        break;
+                    }
+                }
             }
-            return 0;
+
+            // Step 11: Return the total number of pairs found
+            return count;
+        }
+
+        private static string ReverseString(string word)
+        {
+            // Step 1: Convert the string into an array of characters
+            char[] wordArray = word.ToCharArray();
+
+            // Step 2: Reverse the order of the characters
+            System.Array.Reverse(wordArray);
+
+            // Step 3: Build a new string from the reversed character array
+            return new string(wordArray);
         }
 
 
