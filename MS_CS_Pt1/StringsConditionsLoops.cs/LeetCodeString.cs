@@ -30,8 +30,8 @@ namespace MS_CS_Pt1.Strings
             //string output_2000 = ReversePrefix("abcdefd", 'd');
             //Console.WriteLine(output_2000);
 
-            int output_2744 = MaximumNumberOfStringPairs(new string[] { "cd", "ac", "dc", "ca", "zz" });
-            Console.WriteLine(output_2744);
+            //int output_2744 = MaximumNumberOfStringPairs(new string[] { "cd", "ac", "dc", "ca", "zz" });
+            //Console.WriteLine(output_2744);
 
         }
 

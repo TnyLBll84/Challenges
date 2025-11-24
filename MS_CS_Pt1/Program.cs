@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using System.ComponentModel.Design;
+using System.Drawing;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 
@@ -15,6 +16,29 @@ namespace MS_CS_Pt1
             numsArray = new int[] { 7, 8, 9 };
 
         }
+
+        internal class Rectangle
+        {
+            // Data Members (Properties)
+            public float Width { get; set; }
+            public float Height { get; set; }
+
+            //Methods (Behvior)
+            public void Draw()
+            {
+                Console.WriteLine("I'm Rectangle");
+            }
+            public float GetArea()
+            {
+                return Width * Height;
+            }
+        }
+
+        internal class Square : Rectangle
+        {
+
+        }
+
         static void Main(string[] args)
         {
             // Debugging
@@ -65,6 +89,8 @@ namespace MS_CS_Pt1
             Console.WriteLine($"After method call: {nums[0]} \n");//7*/
 
             //MS_CS_Pt6();
+
+            Drawing();
 
         }
         // Add parameters to the method (MS_CS_Pt5)
@@ -1377,6 +1403,22 @@ namespace MS_CS_Pt1
                     Console.WriteLine(""); // Optional: leave blank if an error occurred
                 }
             }
+        }
+
+        static void Drawing ()
+        {
+            Rectangle rectObj = new Rectangle();
+            Square squareObj = new Square();
+
+            rectObj.Width = 20;
+            rectObj.Height = 5;
+            rectObj.Draw();
+            Console.WriteLine(rectObj.GetArea());
+
+            squareObj.Width = 20;
+            squareObj.Height = 20;
+            squareObj.Draw();
+            Console.WriteLine(squareObj.GetArea());
         }
     }
 }
